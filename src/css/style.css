@@ -4,10 +4,10 @@ body {
     font-family: 'Roboto', monospace;
     background: #111;
     color: #fff;
-
 }
 
 .container {
+    height: 20%;
     display: flex;
     margin: 0 auto;
     position: fixed;
@@ -18,15 +18,20 @@ body {
 .header {
     position: absolute;
     z-index: 9999;
-    margin-top: 10px;
-    margin-bottom: 100px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 100px; */
     align-items: center;
     justify-content: center;
-    height: 20px;
-    border-radius: 5px;
+    background-color: #111;
+    height: 50px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 19px rgba(0,0,0,1);
+
 }
 .header__link {
     margin: 70px;
+    text-align: center;
+    padding: 20px;
     text-decoration: none;
     font-size: 15px;
     color: #fff;
@@ -70,7 +75,7 @@ body {
 
 .movie {
     flex-wrap: wrap;
-    padding-top: 30px;
+    padding-top: 100px;
     margin: 0 auto;
     max-width: 900px;
     text-align: center;
@@ -121,8 +126,9 @@ body {
     position: absolute;
     z-index: -1;
     width: 100%;
-    height: 105%;
+    height: 100%;
     background-size: cover;
+    background-position: center;
     opacity: 0.2;
     -webkit-filter: blur(5px);
     -moz-filter: blur(5px);
@@ -133,12 +139,10 @@ body {
 
 .navigation {
     display: none;
-    text-align: center;
-    flex-wrap: wrap;
     color: white;
     font-size: 20px;
     -webkit-text-stroke-width: 0.4px;
-    transition: ease-in 90ms;
+    transition: ease-in 290ms;
     cursor: pointer;
     padding-right: 15px;
     padding-left: 15px;
@@ -157,15 +161,14 @@ body {
     color: #ccc;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 960px) {
     
     .background-img{
-        height: 100% ;
+        height: 100%;
     }
     .header {
-        width: 300px;
+        width: 100%;
         position: absolute;
-        margin-bottom: -10px;
     }
     .header__link {
         margin: 0 ;
@@ -173,6 +176,9 @@ body {
     }
     .search__input {
         width: 300px;
+    }
+    .movie {
+        padding-top: 40px;
     }
     .movie__title{
         font-size: 25px;
