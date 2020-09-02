@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
 body {
     font-family: 'Roboto', monospace;
@@ -18,28 +18,24 @@ body {
 .header {
     position: absolute;
     z-index: 9999;
-    /* margin-top: 20px; */
-    /* margin-bottom: 100px; */
     align-items: center;
     justify-content: center;
     background-color: #111;
     height: 50px;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 5px 19px rgba(0,0,0,1);
-
+    width: 100%;
 }
 .header__link {
-    margin: 70px;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     text-decoration: none;
     font-size: 15px;
     color: #fff;
-    transition: ease-in-out 320ms;
+    transition: ease-in-out 220ms;
 }
 
 .header__link:hover{
-    color: #6875f5;
+    background-color: #222;
+    color: #fff;
 }
 
 .search {
@@ -98,7 +94,9 @@ body {
 }
 
 .movie__about {
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 700;
     font-style: italic;
     margin-bottom: -10px;
 }
@@ -157,11 +155,8 @@ body {
     pointer-events: none;
     color: #ffffff3a;
 }
-.disable:hover{
-    color: #ccc;
-}
 
-@media (max-width: 960px) {
+@media (max-height: 960px) {
     
     .background-img{
         height: 100%;
@@ -171,14 +166,14 @@ body {
         position: absolute;
     }
     .header__link {
-        margin: 0 ;
-        margin-left: 15px;
+        margin: auto;
+        margin-left: 10px;
     }
     .search__input {
         width: 300px;
     }
     .movie {
-        padding-top: 40px;
+        padding-top: 50px;
     }
     .movie__title{
         font-size: 25px;
