@@ -1,0 +1,27 @@
+{
+  "name": "imdbjs",
+  "version": "1.0.0",
+  "description": "Aplicação feita com javascript vanilla, que busca por um filme e mostra sua capa, data de lançamento e uma sinopse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sampaioxsamuel/imdb-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sampaioxsamuel/imdb-js/issues"
+  },
+  "homepage": "https://github.com/sampaioxsamuel/imdb-js#readme",
+  "dependencies": {
+    "eslint-config-prettier": "^6.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
