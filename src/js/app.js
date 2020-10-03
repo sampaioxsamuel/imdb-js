@@ -1,3 +1,5 @@
+import Modal from './modal.js';
+
 const searchInput = document.querySelector('[data-search^="input"]');
 const backgroundImg = document.querySelector('[data-bg]');
 const searchContainer = document.querySelector('[data-search^="container"]');
@@ -7,13 +9,14 @@ const nextBtn = document.querySelector('[data-next]');
 const previousBtn = document.querySelector('[data-previous]');
 
 const backgroundUrl = (url) => `https://image.tmdb.org/t/p/w1920_and_h1080_multi_faces${url}`;
-
 const posterUrl = (url) => `https://image.tmdb.org/t/p/w600_and_h900_bestv2${url}`;
-
 const theMovieDB = (name, API_KEY) => fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${name}&language=pt-BR&en-US`);
 
+const movieNotFound = new Modal('Você precisa digitar o nome de um filme!', 'Tentar novamente');
+const firstMovie = new Modal('Você já está no primeiro filme encontrado!', 'Fechar');
+
 let mvNumber = 0;
-const API_KEY = ''; // GET YOUR API KEY IN themoviedb.org;
+const API_KEY = '1e88c37294fd306d24ce026847af1405'; // GET YOUR API KEY IN themoviedb.org;
 
 previousBtn.classList.add('disable');
 
@@ -29,10 +32,11 @@ function showMovie(movieNumber) {
   theMovieDB(movieName, API_KEY)
     .then((response) => response.json())
     .then((movieFound) => {
+      
       if (typeof movieFound.results[mvNumber + 1] === 'undefined') {
         nextBtn.classList.add('disable');
       }
-
+      
       const backdrop = movieFound.results[movieNumber].backdrop_path;
       const movieTitle = movieFound.results[movieNumber].title;
       const movieOverview = movieFound.results[movieNumber].overview;
@@ -69,43 +73,40 @@ function showMovie(movieNumber) {
       resultContainer.append(movieDiv);
     })
     .catch(() => {
-      // Implement a modal
-
+      
       window.location.reload();
     });
 }
 
 function nextMovie() {
-  if (mvNumber > 18) {
-    nextBtn.classList.add('disable');
-  } else {
-    resultContainer.innerHTML = '';
-    showMovie(mvNumber);
-    mvNumber += 1;
-    previousBtn.classList.remove('disable');
-  }
+  resultContainer.innerHTML = "";
+  mvNumber += 1;
+  showMovie(mvNumber);
+  previousBtn.classList.remove("disable");
+	
 }
 
 function previousMovie() {
-  if (mvNumber >= 1) {
-    mvNumber -= 1;
-    resultContainer.innerHTML = '';
-    showMovie(mvNumber);
+  if (mvNumber < 1){
+    console.log('entrou')
+    previousBtn.classList.add("disable");
   } else {
-    previousBtn.classList.add('disable');
-    // Implement a modal
+    resultContainer.innerHTML = "";
+    mvNumber -= 1;
+    showMovie(mvNumber);
   }
 }
 
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
+
+searchInput.addEventListener('keydown', ({key}) => {
+  if (key === 'Enter') {
     if (searchInput.value === '') {
-      // Implement a modal
+      document.body.appendChild(movieNotFound.createElement());
 
       searchInput.classList.add('erro');
       setTimeout(() => {
         searchInput.classList.remove('erro');
-      }, 2000);
+      }, 2500);
     } else {
       searchContainer.classList.add('hidden');
       showMovie(mvNumber);
