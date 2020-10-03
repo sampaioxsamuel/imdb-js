@@ -19,6 +19,7 @@
 		<section data-search="container" class="container search">
 			<div class="item">
 				<label class="search__title">Pesquisa</label>                
+				<p data-error style="margin-left: 20px;font-size: 10px; visibility: hidden;"></p>
 				<input
 				data-search="input"
 				class="search__input"
@@ -26,12 +27,12 @@
 				placeholder="Movie Name"
 				required
                 />
-            </div>
+      </div>
 		</section>
 
 		<section data-result class="movie"></section>
 		<div class="movie nav">
-			<a data-previous class="navigation previous">〈 </a>
+			<a data-previous class="navigation previous disable">〈 </a>
 			<a data-next class="navigation next"> 〉</a>
 		</div>
 

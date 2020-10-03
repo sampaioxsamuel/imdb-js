@@ -1,5 +1,3 @@
-import Modal from './modal.js';
-
 const searchInput = document.querySelector('[data-search^="input"]');
 const backgroundImg = document.querySelector('[data-bg]');
 const searchContainer = document.querySelector('[data-search^="container"]');
@@ -7,13 +5,12 @@ const resultContainer = document.querySelector('[data-result]');
 
 const nextBtn = document.querySelector('[data-next]');
 const previousBtn = document.querySelector('[data-previous]');
+const pError = document.querySelector('[data-error]');
 
 const backgroundUrl = (url) => `https://image.tmdb.org/t/p/w1920_and_h1080_multi_faces${url}`;
 const posterUrl = (url) => `https://image.tmdb.org/t/p/w600_and_h900_bestv2${url}`;
 const theMovieDB = (name, API_KEY) => fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${name}&language=pt-BR&en-US`);
 
-const movieNotFound = new Modal('Você precisa digitar o nome de um filme!', 'Tentar novamente');
-const firstMovie = new Modal('Você já está no primeiro filme encontrado!', 'Fechar');
 
 let mvNumber = 0;
 const API_KEY = '1e88c37294fd306d24ce026847af1405'; // GET YOUR API KEY IN themoviedb.org;
@@ -32,7 +29,6 @@ function showMovie(movieNumber) {
   theMovieDB(movieName, API_KEY)
     .then((response) => response.json())
     .then((movieFound) => {
-      
       if (typeof movieFound.results[mvNumber + 1] === 'undefined') {
         nextBtn.classList.add('disable');
       }
@@ -87,8 +83,7 @@ function nextMovie() {
 }
 
 function previousMovie() {
-  if (mvNumber < 1){
-    console.log('entrou')
+  if (mvNumber === 0){
     previousBtn.classList.add("disable");
   } else {
     resultContainer.innerHTML = "";
@@ -101,10 +96,12 @@ function previousMovie() {
 searchInput.addEventListener('keydown', ({key}) => {
   if (key === 'Enter') {
     if (searchInput.value === '') {
-      document.body.appendChild(movieNotFound.createElement());
-
+      // document.body.appendChild(movieNotFound.createElement());
+      pError.style.visibility = "visible"
+      pError.innerText = "OBS: Você precisa digitar algo"
       searchInput.classList.add('erro');
       setTimeout(() => {
+      pError.style.visibility = "hidden";
         searchInput.classList.remove('erro');
       }, 2500);
     } else {
