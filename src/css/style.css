@@ -53,7 +53,7 @@ body {
 .search__input {
     box-shadow: 5px 5px 19px rgba(0,0,0,0.2);
     transition: ease-in-out 380ms;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     width: 500px;
     height: 40px;
     border: none;
@@ -63,6 +63,7 @@ body {
     border-radius: 25px;
     text-align: center;
     background-color: #222;
+    outline: none;
 }
 .search__input:focus{
     background-color:#fff;
@@ -113,9 +114,10 @@ body {
 
 .erro {
     border: 1px solid #fa3c48;
+    visibility: visible;
 }
 .erro:focus {
-    background: #fa3c48;
+    background: #222;
     color: #fff;
 }
 
@@ -218,7 +220,7 @@ body {
     border-radius: 5px;
     min-width: 300px;
     min-height: 150px;
-    background: #fff;
+    background: #211f28;
     padding: 20px;
     position: relative;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
@@ -226,7 +228,7 @@ body {
 
 .modal p {
     margin-top: 40px;
-    color: black;
+    color: white;
     margin-bottom: 50px;
 }
 
